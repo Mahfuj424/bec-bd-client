@@ -30,7 +30,6 @@ export default function CarouselBanner({ slides, autoPlayInterval = 5000, classN
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
   }, [slides.length])
 
-  
   useEffect(() => {
     const interval = setInterval(nextSlide, autoPlayInterval)
     return () => clearInterval(interval)
