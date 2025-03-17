@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+
+.gradient-bg {
+    @apply bg-gradient-to-r from-green-600 via-red-500 to-green-600;
+  }
