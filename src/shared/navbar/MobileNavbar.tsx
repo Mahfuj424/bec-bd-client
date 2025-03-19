@@ -23,15 +23,24 @@ const MobileNavbar = ({
   const [searchState, setSearchState] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setSearchState(searchVisible);
-  }, [searchVisible]);
+    setHasMounted(true); // Ensures the component renders only on the client
+  }, []);
 
   useEffect(() => {
-    const segments = pathname.split("/");
-    setActiveSegment(segments.pop() || ""); // Get the last part of the path
-  }, [pathname]);
+    if (hasMounted) {
+      setSearchState(searchVisible);
+    }
+  }, [searchVisible, hasMounted]);
+
+  useEffect(() => {
+    if (hasMounted) {
+      const segments = pathname.split("/");
+      setActiveSegment(segments.pop() || ""); // Get the last part of the path
+    }
+  }, [pathname, hasMounted]);
 
   const handleMenuClick = () => {
     setIsDrawerOpen(false);
@@ -47,6 +56,8 @@ const MobileNavbar = ({
       });
     }, 200);
   };
+
+  if (!hasMounted) return null; // Prevent rendering before mounting to avoid hydration issues
 
   return (
     <>
