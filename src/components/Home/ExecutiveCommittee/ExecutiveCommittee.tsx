@@ -59,12 +59,6 @@ export default function ExecutiveCommittee() {
       position: "VICE-CHAIRMAN",
       image: "/member/reza.png",
     },
-    {
-      id: 4,
-      name: "BM ZAHIDUL ISLAM",
-      position: "VICE-PRESIDENT",
-      image: "/member/zahidul.jpg",
-    },
   ];
 
   // Animation variants
@@ -91,14 +85,12 @@ export default function ExecutiveCommittee() {
     },
   };
 
-
-
   return (
-    <section className="w-full py-12 bg-white">
+    <section className="max-w-7xl mx-auto py-12 bg-white">
       {/* Header with green border */}
       <div className="container mx-auto px-6">
         <div>
-            <HeaderSection title="PRESENT EXECUTIVE COMMITTEE" />
+          <HeaderSection title="PRESENT EXECUTIVE COMMITTEE" />
         </div>
 
         {/* Committee members grid */}
@@ -106,7 +98,7 @@ export default function ExecutiveCommittee() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {committeeMembers.map((member) => (
             <motion.div

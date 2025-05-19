@@ -27,8 +27,8 @@ import {
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const date = new Date()
-  const currentYear = date.getFullYear()
+  const date = new Date();
+  const currentYear = date.getFullYear();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -315,8 +315,15 @@ export default function Footer() {
               </div>
             </div>
             <div className="text-gray-400 text-sm text-center md:text-right">
-              Copyright {currentYear} © BEC | All Right Reserved | Designed & Developed
-              By Mahfuj Alam at TabEdge
+              Copyright {currentYear} ©BEC | All Right Reserved | Designed &
+              Developed By{" "}
+              <Link
+                href="https://www.linkedin.com/in/mahfujalam1"
+                target="_blank"
+                className="text-green-500 hover:text-green-400"
+              >
+                Mahfuj Alam
+              </Link>
             </div>
           </div>
         </div>
