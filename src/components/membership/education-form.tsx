@@ -8,7 +8,7 @@ export default function EducationForm() {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-lg font-medium">Educational Background</h3>
+      <h3 className="text-lg font-medium">Educational Backgroundddd</h3>
 
       <Controller
         name="educationEntries"
