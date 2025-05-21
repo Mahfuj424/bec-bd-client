@@ -19,7 +19,13 @@ export default function EducationForm({
   const addEducationEntry = () => {
     updateFormData("educationEntries", [
       ...formData.educationEntries,
-      { degree: "", university: "", passingYear: "", result: "" },
+      {
+        degree: "",
+        university: "",
+        passingYear: "",
+        result: "",
+        certificate: null,
+      },
     ]);
   };
 
