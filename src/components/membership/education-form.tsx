@@ -2,9 +2,34 @@
 
 import { useFormContext, Controller } from "react-hook-form";
 import type { FormData } from "@/app/become-a-member/page";
+import Link from "next/link";
+
+const IMGBB_API_KEY = "2696fe7faa1168ada1e00b4cdb7bd8ea"; // 🔁 Replace with your actual API key
 
 export default function EducationForm() {
   const { control } = useFormContext<FormData>();
+
+  // Image uploader to imgbb
+  const uploadToImgBB = async (file: File): Promise<string | null> => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const res = await fetch(
+        `https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await res.json();
+      return data?.data?.url || null;
+    } catch (error) {
+      console.error("Image upload failed", error);
+      return null;
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -19,7 +44,7 @@ export default function EducationForm() {
             university: "",
             passingYear: "",
             result: "",
-            certificate: null,
+            certificate: "",
           },
         ]}
         render={({ field }) => (
@@ -29,7 +54,7 @@ export default function EducationForm() {
                 key={index}
                 className="space-y-4 p-4 border border-gray-200 rounded-md relative"
               >
-                {/* Remove Entry */}
+                {/* Remove Button */}
                 {field.value.length > 1 && (
                   <button
                     type="button"
@@ -45,115 +70,111 @@ export default function EducationForm() {
                   </button>
                 )}
 
+                {/* Inputs */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label
-                      htmlFor={`degree-${index}`}
-                      className="block text-sm font-medium text-gray-700"
-                    >
+                    <label className="text-sm font-medium">
                       Degree/Certificate
                     </label>
                     <input
-                      id={`degree-${index}`}
                       type="text"
                       value={entry.degree}
                       onChange={(e) => {
-                        const updatedEntries = [...field.value];
-                        updatedEntries[index].degree = e.target.value;
-                        field.onChange(updatedEntries);
+                        const updated = [...field.value];
+                        updated[index].degree = e.target.value;
+                        field.onChange(updated);
                       }}
                       placeholder="e.g., BSc in Engineering"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      className="w-full px-3 py-2 border rounded-md"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label
-                      htmlFor={`university-${index}`}
-                      className="block text-sm font-medium text-gray-700"
-                    >
+                    <label className="text-sm font-medium">
                       Board/University
                     </label>
                     <input
-                      id={`university-${index}`}
                       type="text"
                       value={entry.university}
                       onChange={(e) => {
-                        const updatedEntries = [...field.value];
-                        updatedEntries[index].university = e.target.value;
-                        field.onChange(updatedEntries);
+                        const updated = [...field.value];
+                        updated[index].university = e.target.value;
+                        field.onChange(updated);
                       }}
-                      placeholder="Enter institution name"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      placeholder="Institution Name"
+                      className="w-full px-3 py-2 border rounded-md"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label
-                      htmlFor={`passingYear-${index}`}
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Passing Year
-                    </label>
+                    <label className="text-sm font-medium">Passing Year</label>
                     <input
-                      id={`passingYear-${index}`}
                       type="text"
                       value={entry.passingYear}
                       onChange={(e) => {
-                        const updatedEntries = [...field.value];
-                        updatedEntries[index].passingYear = e.target.value;
-                        field.onChange(updatedEntries);
+                        const updated = [...field.value];
+                        updated[index].passingYear = e.target.value;
+                        field.onChange(updated);
                       }}
                       placeholder="e.g., 2022"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      className="w-full px-3 py-2 border rounded-md"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label
-                      htmlFor={`result-${index}`}
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Result/GPA
-                    </label>
+                    <label className="text-sm font-medium">Result/GPA</label>
                     <input
-                      id={`result-${index}`}
                       type="text"
                       value={entry.result}
                       onChange={(e) => {
-                        const updatedEntries = [...field.value];
-                        updatedEntries[index].result = e.target.value;
-                        field.onChange(updatedEntries);
+                        const updated = [...field.value];
+                        updated[index].result = e.target.value;
+                        field.onChange(updated);
                       }}
-                      placeholder="Enter your result"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      placeholder="e.g., 3.75"
+                      className="w-full px-3 py-2 border rounded-md"
                     />
                   </div>
                 </div>
 
                 {/* Certificate Upload */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Upload Certificate
-                  </label>
+                  <label className="text-sm font-medium">Certificate</label>
                   <input
                     type="file"
                     accept="image/*"
-                    onChange={(e) => {
+                    onChange={async (e) => {
                       const file = e.target.files?.[0];
-                      const updatedEntries = [...field.value];
-                      updatedEntries[index].certificate = file || null;
-                      field.onChange(updatedEntries);
+                      if (!file) return;
+
+                      const url = await uploadToImgBB(file);
+                      if (url) {
+                        const updated = [...field.value];
+                        updated[index].certificate = url;
+                        field.onChange(updated);
+                      }
                     }}
                   />
+                  {entry.certificate && (
+                    <p className="text-sm text-green-600">
+                      Uploaded:{" "}
+                      <Link
+                        href={entry.certificate}
+                        target="_blank"
+                        className="underline"
+                      >
+                        view certificate
+                      </Link>
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
 
-            {/* Add More Button */}
+            {/* Add More */}
             <button
               type="button"
-              onClick={() => {
+              onClick={() =>
                 field.onChange([
                   ...field.value,
                   {
@@ -161,10 +182,10 @@ export default function EducationForm() {
                     university: "",
                     passingYear: "",
                     result: "",
-                    certificate: null,
+                    certificate: "",
                   },
-                ]);
-              }}
+                ])
+              }
               className="w-full py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
             >
               Add Another Education Entry

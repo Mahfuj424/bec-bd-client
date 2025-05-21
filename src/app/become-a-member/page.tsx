@@ -35,6 +35,7 @@ export type EducationEntry = {
   university: string;
   passingYear: string;
   result: string;
+  certificate: string;
 };
 
 export type ProfessionalEntry = {
@@ -104,7 +105,13 @@ export default function MembershipForm() {
 
       // Education
       educationEntries: [
-        { degree: "", university: "", passingYear: "", result: "" },
+        {
+          degree: "",
+          university: "",
+          passingYear: "",
+          result: "",
+          certificate: "",
+        },
       ],
 
       // Professional
@@ -206,6 +213,7 @@ export default function MembershipForm() {
         return null;
     }
   };
+  console.log(process.env.IMGBB_API_KEY);
 
   return (
     <div className="container mx-auto py-8 px-4">

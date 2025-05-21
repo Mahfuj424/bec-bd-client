@@ -24,7 +24,7 @@ export default function EducationForm({
         university: "",
         passingYear: "",
         result: "",
-        certificate: null,
+        certificate: "",
       },
     ]);
   };
