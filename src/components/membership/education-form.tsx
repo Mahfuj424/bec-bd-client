@@ -139,10 +139,13 @@ export default function EducationForm() {
 
                 {/* Certificate Upload */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Certificate</label>
+                  <label className="text-sm font-medium pe-2">
+                    Certificate
+                  </label>
                   <input
                     type="file"
                     accept="image/*"
+                    className="ps-3 border-dashed border rounded-lg cursor-pointer"
                     onChange={async (e) => {
                       const file = e.target.files?.[0];
                       if (!file) return;

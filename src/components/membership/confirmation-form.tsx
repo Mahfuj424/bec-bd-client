@@ -62,10 +62,6 @@ export default function ConfirmationForm() {
             formData.membershipType === "corporate") && (
             <>
               <div className="flex justify-between">
-                <span className="text-gray-500">Proposed By:</span>
-                <span className="font-medium">{formData.proposedBy.name}</span>
-              </div>
-              <div className="flex justify-between">
                 <span className="text-gray-500">
                   Proposer Membership Number:
                 </span>

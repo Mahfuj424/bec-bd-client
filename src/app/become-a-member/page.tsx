@@ -44,11 +44,6 @@ export type ProfessionalEntry = {
   duration: string;
 };
 
-export type ProposedBy = {
-  name: string;
-  membershipNumber: string;
-};
-
 export type FormData = {
   // Personal Info
   fullName: string;
@@ -73,9 +68,10 @@ export type FormData = {
 
   // Membership
   membershipType: string;
-  proposedBy: ProposedBy;
-  signaturePreview: string;
-  signatureDate: string;
+  proposedBy: {
+    membershipNumber?: string;
+  };
+  signatureUrl?: string;
 
   // Payment
   paymentMethod: string;
@@ -120,11 +116,9 @@ export default function MembershipForm() {
       // Membership
       membershipType: "regular",
       proposedBy: {
-        name: "",
         membershipNumber: "",
       },
-      signaturePreview: "",
-      signatureDate: "",
+      signatureUrl: "",
 
       // Payment
       paymentMethod: "bkash",
@@ -169,7 +163,7 @@ export default function MembershipForm() {
       case STEPS.MEMBERSHIP_TYPE:
         isStepValid = await trigger([
           "membershipType",
-          "proposedBy.name",
+          "signatureUrl",
           "proposedBy.membershipNumber",
         ]);
         break;
