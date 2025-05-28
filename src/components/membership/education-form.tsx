@@ -3,33 +3,11 @@
 import { useFormContext, Controller } from "react-hook-form";
 import type { FormData } from "@/app/become-a-member/page";
 import Link from "next/link";
-
-const IMGBB_API_KEY = "2696fe7faa1168ada1e00b4cdb7bd8ea"; // 🔁 Replace with your actual API key
+import { FiX } from "react-icons/fi"; // ✅ react-icons import
+import { uploadToImgbb } from "@/utils/UploadImages";
 
 export default function EducationForm() {
   const { control } = useFormContext<FormData>();
-
-  // Image uploader to imgbb
-  const uploadToImgBB = async (file: File): Promise<string | null> => {
-    const formData = new FormData();
-    formData.append("image", file);
-
-    try {
-      const res = await fetch(
-        `https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const data = await res.json();
-      return data?.data?.url || null;
-    } catch (error) {
-      console.error("Image upload failed", error);
-      return null;
-    }
-  };
 
   return (
     <div className="space-y-6">
@@ -64,9 +42,10 @@ export default function EducationForm() {
                       );
                       field.onChange(updatedEntries);
                     }}
-                    className="absolute top-2 right-2 text-red-500 text-sm"
+                    className="absolute top-2 right-2 text-red-500 hover:text-red-700"
+                    title="Remove"
                   >
-                    ✕
+                    <FiX size={18} />
                   </button>
                 )}
 
@@ -150,7 +129,7 @@ export default function EducationForm() {
                       const file = e.target.files?.[0];
                       if (!file) return;
 
-                      const url = await uploadToImgBB(file);
+                      const url = await uploadToImgbb(file); // ✅ uses the imported util function
                       if (url) {
                         const updated = [...field.value];
                         updated[index].certificate = url;

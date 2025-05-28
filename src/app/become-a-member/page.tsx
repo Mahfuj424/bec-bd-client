@@ -47,6 +47,7 @@ export type ProfessionalEntry = {
 export type FormData = {
   // Personal Info
   fullName: string;
+  profile: string;
   fatherName: string;
   motherName: string;
   dateOfBirth: string;
@@ -58,7 +59,6 @@ export type FormData = {
   gender: string;
   nidPassport: string;
   emergencyContact: string;
-  photo: FileList | null;
 
   // Education
   educationEntries: EducationEntry[];
@@ -68,9 +68,7 @@ export type FormData = {
 
   // Membership
   membershipType: string;
-  proposedBy: {
-    membershipNumber?: string;
-  };
+  membershipNumber?: string;
   signatureUrl?: string;
 
   // Payment
@@ -80,6 +78,7 @@ export type FormData = {
 
 export default function MembershipForm() {
   const [step, setStep] = useState(STEPS.PERSONAL_INFO);
+  const [termConditionIsTrue, setTermConditionIsTrue] = useState(false);
 
   // Initialize React Hook Form
   const methods = useForm<FormData>({
@@ -97,7 +96,7 @@ export default function MembershipForm() {
       gender: "",
       nidPassport: "",
       emergencyContact: "",
-      photo: null,
+      profile: "",
 
       // Education
       educationEntries: [
@@ -115,9 +114,7 @@ export default function MembershipForm() {
 
       // Membership
       membershipType: "regular",
-      proposedBy: {
-        membershipNumber: "",
-      },
+      membershipNumber: "",
       signatureUrl: "",
 
       // Payment
@@ -164,7 +161,7 @@ export default function MembershipForm() {
         isStepValid = await trigger([
           "membershipType",
           "signatureUrl",
-          "proposedBy.membershipNumber",
+          "membershipNumber",
         ]);
         break;
       case STEPS.PAYMENT:
@@ -302,7 +299,11 @@ export default function MembershipForm() {
                 {step === STEPS.PROFESSIONAL && <ProfessionalForm />}
                 {step === STEPS.MEMBERSHIP_TYPE && <MembershipTypeForm />}
                 {step === STEPS.PAYMENT && <PaymentForm />}
-                {step === STEPS.CONFIRMATION && <ConfirmationForm />}
+                {step === STEPS.CONFIRMATION && (
+                  <ConfirmationForm
+                    setTermConditionIsTrue={setTermConditionIsTrue}
+                  />
+                )}
               </div>
 
               {/* Card Footer */}
@@ -332,7 +333,12 @@ export default function MembershipForm() {
                 {step === STEPS.CONFIRMATION && (
                   <button
                     type="submit"
-                    className="py-2 px-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-green-500"
+                    disabled={!termConditionIsTrue}
+                    className={`py-2 px-4 ${
+                      !termConditionIsTrue
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-green-600 hover:bg-green-700"
+                    } text-white font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-green-500`}
                   >
                     Submit Application
                   </button>

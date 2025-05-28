@@ -85,17 +85,15 @@ export default function MembershipTypeForm() {
             <input
               id="proposedBy.membershipNumber"
               type="text"
-              {...register("proposedBy.membershipNumber")}
+              {...register("membershipNumber")}
               placeholder="Enter if applicable"
               className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.proposedBy?.membershipNumber
-                  ? "border-red-500"
-                  : "border-gray-300"
+                errors.membershipNumber ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {errors.proposedBy?.membershipNumber && (
+            {errors.membershipNumber && (
               <p className="text-xs text-red-500 mt-1">
-                {errors.proposedBy.membershipNumber.message}
+                {errors.membershipNumber.message}
               </p>
             )}
           </div>
@@ -128,7 +126,7 @@ export default function MembershipTypeForm() {
             type="file"
             accept="image/*"
             onChange={handleImageUpload}
-            className="mt-2 block text-sm text-gray-700"
+            className="mt-2 block text-sm text-gray-700 ps-3 border-dashed border rounded-lg cursor-pointer"
           />
           {errors.signatureUrl && (
             <p className="text-xs text-red-500 mt-1">

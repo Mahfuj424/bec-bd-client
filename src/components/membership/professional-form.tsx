@@ -2,6 +2,7 @@
 
 import { useFormContext, Controller } from "react-hook-form";
 import type { FormData } from "@/app/become-a-member/page";
+import { FiX } from "react-icons/fi";
 
 export default function ProfessionalForm() {
   const { control } = useFormContext<FormData>();
@@ -19,8 +20,25 @@ export default function ProfessionalForm() {
             {field.value.map((entry, index) => (
               <div
                 key={index}
-                className="space-y-4 p-4 border border-gray-200 rounded-md"
+                className="space-y-4 p-4 border border-gray-200 rounded-md relative"
               >
+                {/* ✕ Remove Button */}
+                {field.value.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const updatedEntries = field.value.filter(
+                        (_, i) => i !== index
+                      );
+                      field.onChange(updatedEntries);
+                    }}
+                    className="absolute top-2 right-2 text-red-500 hover:text-red-700"
+                    title="Remove"
+                  >
+                    <FiX size={18} />
+                  </button>
+                )}
+
                 <div className="space-y-2">
                   <label
                     htmlFor={`company-${index}`}
@@ -88,7 +106,7 @@ export default function ProfessionalForm() {
                         };
                         field.onChange(updatedEntries);
                       }}
-                      placeholder="e.g., 2020-Present"
+                      placeholder="e.g., 2020–Present"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -98,12 +116,12 @@ export default function ProfessionalForm() {
 
             <button
               type="button"
-              onClick={() => {
+              onClick={() =>
                 field.onChange([
                   ...field.value,
                   { company: "", position: "", duration: "" },
-                ]);
-              }}
+                ])
+              }
               className="w-full py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Add Another Professional Entry

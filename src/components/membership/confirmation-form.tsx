@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useFormContext } from "react-hook-form";
 import type { FormData } from "@/app/become-a-member/page";
 
-export default function ConfirmationForm() {
+export default function ConfirmationForm({ setTermConditionIsTrue }: any) {
   const { watch } = useFormContext<FormData>();
   const formData = watch();
 
@@ -65,9 +66,7 @@ export default function ConfirmationForm() {
                 <span className="text-gray-500">
                   Proposer Membership Number:
                 </span>
-                <span className="font-medium">
-                  {formData.proposedBy.membershipNumber}
-                </span>
+                <span className="font-medium">{formData.membershipNumber}</span>
               </div>
             </>
           )}
@@ -93,6 +92,7 @@ export default function ConfirmationForm() {
       <div className="p-4 border border-gray-200 rounded-md">
         <div className="flex items-center mb-4">
           <input
+            onClick={() => setTermConditionIsTrue(true)}
             type="checkbox"
             id="confirmDeclaration"
             className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"

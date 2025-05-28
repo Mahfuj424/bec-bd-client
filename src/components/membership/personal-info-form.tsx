@@ -5,26 +5,37 @@ import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
 import type { FormData } from "@/app/become-a-member/page";
+import { uploadToImgbb } from "@/utils/UploadImages";
 
 export default function PersonalInfoForm() {
   const {
     register,
     formState: { errors },
+    setValue,
     watch,
   } = useFormContext<FormData>();
-  const [photoPreview, setPhotoPreview] = useState<string>("");
 
-  // Watch the photo field to create preview
-  const photoField = watch("photo");
+  const [preview, setPreview] = useState<string | null>(null);
 
-  // Create preview when photo changes
-  if (photoField && photoField[0] && !photoPreview) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPhotoPreview(reader.result as string);
-    };
-    reader.readAsDataURL(photoField[0]);
-  }
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Show local preview
+    const localUrl = URL.createObjectURL(file);
+    setPreview(localUrl);
+
+    try {
+      const url = await uploadToImgbb(file);
+      setValue("profile", url);
+      console.log("Uploaded image URL:", url);
+    } catch (err) {
+      console.error("Image upload failed:", err);
+    } finally {
+    }
+  };
+
+  const profile = watch("profile");
 
   return (
     <div className="space-y-4">
@@ -56,13 +67,14 @@ export default function PersonalInfoForm() {
             htmlFor="photo"
             className="block text-sm font-medium text-gray-700"
           >
-            Photo (A4 Size)
+            Profile Photo
           </label>
-          <div className="flex flex-col items-center">
-            <div className="w-32 h-40 border border-gray-300 rounded-md overflow-hidden mb-2 flex items-center justify-center bg-gray-50">
-              {photoPreview ? (
+          <div className="space-y-2">
+            {/* Preview */}
+            <div className="w-32 h-40 border border-gray-300 rounded-md overflow-hidden flex items-center justify-center bg-gray-50">
+              {preview || profile ? (
                 <Image
-                  src={photoPreview || "/placeholder.svg"}
+                  src={preview || profile!}
                   alt="Profile Preview"
                   width={128}
                   height={160}
@@ -70,16 +82,15 @@ export default function PersonalInfoForm() {
                 />
               ) : (
                 <span className="text-xs text-gray-500 text-center p-2">
-                  Upload A4 size photo
+                  No image selected
                 </span>
               )}
             </div>
             <input
-              id="photo"
               type="file"
               accept="image/*"
-              {...register("photo")}
-              className="w-full text-xs"
+              onChange={handleImageChange}
+              className="block w-40 ps-3 border-dashed border rounded-lg cursor-pointer"
             />
           </div>
         </div>
