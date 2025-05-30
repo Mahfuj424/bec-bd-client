@@ -33,7 +33,7 @@ export const STEPS = {
 export type EducationEntry = {
   degree: string;
   university: string;
-  passingYear: string;
+  passingYear: number;
   result: string;
   certificate: string;
 };
@@ -53,12 +53,12 @@ export type FormData = {
   dateOfBirth: string;
   nationality: string;
   address: string;
-  mobile: string;
+  mobile: number;
   email: string;
   bloodGroup: string;
   gender: string;
-  nidPassport: string;
-  emergencyContact: string;
+  nidPassport: number;
+  emergencyContact: number;
 
   // Education
   educationEntries: EducationEntry[];
@@ -90,12 +90,12 @@ export default function MembershipForm() {
       dateOfBirth: "",
       nationality: "",
       address: "",
-      mobile: "",
+      mobile: undefined,
       email: "",
       bloodGroup: "",
       gender: "",
-      nidPassport: "",
-      emergencyContact: "",
+      nidPassport: undefined,
+      emergencyContact: undefined,
       profile: "",
 
       // Education
@@ -103,7 +103,7 @@ export default function MembershipForm() {
         {
           degree: "",
           university: "",
-          passingYear: "",
+          passingYear: undefined,
           result: "",
           certificate: "",
         },

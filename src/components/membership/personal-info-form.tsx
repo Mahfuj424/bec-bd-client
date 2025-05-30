@@ -228,7 +228,7 @@ export default function PersonalInfoForm() {
           </label>
           <input
             id="mobile"
-            type="text"
+            type="number"
             {...register("mobile", {
               required: "Mobile number is required",
               pattern: {
@@ -336,7 +336,7 @@ export default function PersonalInfoForm() {
           </label>
           <input
             id="nidPassport"
-            type="text"
+            type="number"
             {...register("nidPassport", {
               required: "NID/Passport number is required",
               minLength: {
@@ -366,7 +366,7 @@ export default function PersonalInfoForm() {
         </label>
         <input
           id="emergencyContact"
-          type="text"
+          type="number"
           {...register("emergencyContact", {
             required: "Emergency contact is required",
           })}
