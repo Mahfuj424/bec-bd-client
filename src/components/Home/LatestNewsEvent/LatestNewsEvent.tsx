@@ -162,7 +162,7 @@ export default function LatestNewsEvents() {
 
   return (
     <section className="py-16 bg-gray-50" ref={ref}>
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto max-w-7xl">
         {/* Title Section */}
         <motion.div
           className="text-center mb-12"
@@ -188,7 +188,7 @@ export default function LatestNewsEvents() {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           <motion.button
-            className="px-6 py-3 text-lg font-medium focus:outline-none"
+            className="px-6 py-3 text-lg font-medium focus:outline-none cursor-pointer"
             variants={tabVariants}
             initial="inactive"
             animate={activeTab === "all" ? "active" : "inactive"}
@@ -199,7 +199,7 @@ export default function LatestNewsEvents() {
             All
           </motion.button>
           <motion.button
-            className="px-6 py-3 text-lg font-medium focus:outline-none flex items-center"
+            className="px-6 py-3 text-lg font-medium focus:outline-none flex items-center cursor-pointer"
             variants={tabVariants}
             initial="inactive"
             animate={activeTab === "news" ? "active" : "inactive"}
@@ -211,7 +211,7 @@ export default function LatestNewsEvents() {
             News
           </motion.button>
           <motion.button
-            className="px-6 py-3 text-lg font-medium focus:outline-none flex items-center"
+            className="px-6 py-3 text-lg font-medium focus:outline-none flex items-center cursor-pointer"
             variants={tabVariants}
             initial="inactive"
             animate={activeTab === "events" ? "active" : "inactive"}
@@ -300,7 +300,10 @@ export default function LatestNewsEvents() {
         </motion.div>
 
         {/* View All Button */}
-        <Link href={'/news-events'} className="text-center flex justify-center mt-10">
+        <Link
+          href={"/news-events"}
+          className="text-center flex justify-center mt-10"
+        >
           <CustomButton name="View All News & Events >" />
         </Link>
       </div>

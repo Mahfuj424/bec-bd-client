@@ -18,35 +18,35 @@ export const navbarItems: NavbarItem[] = [
     children: [
       {
         label: "History of BEC",
-        path: "/about/history-of-bec",
+        path: "/to-do",
       },
       {
         label: "Message Of President",
-        path: "/about/message-of-president",
+        path: "/to-do",
       },
       {
         label: "Message Of General Secretary",
-        path: "/about/message-of-general-secretary",
+        path: "/to-do",
       },
       {
         label: "Message Of ICT Secretary",
-        path: "/about/message-of-ict-secretary",
+        path: "/to-do",
       },
       {
         label: "BEC Advisor",
-        path: "/about/bec-advisor",
+        path: "/to-do",
       },
       {
         label: "Constitution",
-        path: "/about/constitution",
+        path: "/to-do",
       },
       {
         label: "Mission & Vision",
-        path: "/about/mission-vision",
+        path: "/to-do",
       },
       {
         label: "Certification",
-        path: "/about/certification",
+        path: "/to-do",
       },
     ],
   },
@@ -56,23 +56,23 @@ export const navbarItems: NavbarItem[] = [
     children: [
       {
         label: "BEC Member",
-        path: "/membership/bec-member",
+        path: "/to-do",
       },
       {
         label: "Membership Process",
-        path: "/membership/membership-process",
+        path: "/to-do",
       },
       {
         label: "Membership Registration Form",
-        path: "/membership/membership-registration-form",
+        path: "/to-do",
       },
       {
         label: "Member Welfare Fund",
-        path: "/membership/member-welfare-fund",
+        path: "/to-do",
       },
       {
         label: "Become A Member",
-        path: "/membership/become-a-member",
+        path: "/to-do",
       },
     ],
   },
@@ -86,15 +86,15 @@ export const navbarItems: NavbarItem[] = [
     children: [
       {
         label: "Photo Gallery",
-        path: "/gallery/photo-gallery",
+        path: "/to-do",
       },
       {
         label: "Video Gallery",
-        path: "/gallery/video-gallery",
+        path: "/to-do",
       },
       {
         label: "Publication",
-        path: "/gallery/publication",
+        path: "/to-do",
       },
     ],
   },

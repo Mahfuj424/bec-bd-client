@@ -12,14 +12,14 @@ interface Partner {
 
 export default function SupportUs() {
   const partners: Partner[] = [
-    { id: 1, name: "BUET", logo: "/support/ibbl-bank.png" },
+    { id: 1, name: "Islami Bank", logo: "/support/ibbl-bank.png" },
     {
       id: 2,
       name: "Ministry of Science and Technology",
       logo: "/support/ibn-sina.png",
     },
     { id: 3, name: "Dhaka University", logo: "/support/ieb.png" },
-    { id: 4, name: "BUET", logo: "/support/ibbl-bank.png" },
+    { id: 4, name: "Islami Bank", logo: "/support/ibbl-bank.png" },
     {
       id: 5,
       name: "Ministry of Science and Technology",
@@ -49,14 +49,14 @@ export default function SupportUs() {
 
   return (
     <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         {/* Title Section */}
         <div className="text-center mb-12">
           <HeaderSection title="Support Us" />
         </div>
 
         {/* Marquee Section */}
-        <div className="relative overflow-hidden w-full py-8 bg-white rounded-lg shadow-md">
+        <div className="relative overflow-hidden w-full py-8">
           <div ref={marqueeRef} className="marquee flex gap-10">
             {[...partners, ...partners].map((partner, index) => (
               <div
