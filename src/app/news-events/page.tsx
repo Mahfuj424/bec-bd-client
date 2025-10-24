@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import Link from "next/link"
 import {
   FaCalendarAlt,
   FaArrowRight,
@@ -280,7 +281,7 @@ export default function LatestNewsEvents() {
                   )}
 
                   <motion.a
-                    href="#"
+                    href={`event/${item?.id}`}
                     className="inline-flex items-center text-green-600 font-medium hover:text-blue-800"
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}

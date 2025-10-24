@@ -214,7 +214,7 @@ export default function MembershipForm() {
           <div className="flex justify-center mb-4">
             <div className="relative w-64 h-20">
               <Image
-                src="/placeholder.svg?height=80&width=256"
+                src="/logo/logo.png"
                 alt="YES Logo"
                 fill
                 className="object-contain"
