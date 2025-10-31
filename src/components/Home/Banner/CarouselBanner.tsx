@@ -46,7 +46,6 @@ export default function CarouselBanner({ slides, autoPlayInterval = 5000, classN
               currentSlide === index ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           >
-            
             <Image
               src={slide.imageUrl || "/placeholder.svg"}
               alt={slide.title}
