@@ -132,3 +132,11 @@ export const newsEvents: NewsEvent[] = [
     type: "news",
   },
 ];
+
+export function getEventById(id: number): NewsEvent | undefined {
+  return newsEvents.find((event) => event.id === id)
+}
+
+export function getEventsByType(type: "events" | "news"): NewsEvent[] {
+  return newsEvents.filter((event) => event.type === type)
+}
