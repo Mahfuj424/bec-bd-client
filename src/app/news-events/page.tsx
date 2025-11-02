@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import Link from "next/link"
 import {
   FaCalendarAlt,
   FaArrowRight,
