@@ -2,10 +2,10 @@
 "use client";
 
 import { useFormContext, Controller } from "react-hook-form";
-import type { FormData } from "@/app/become-a-member/page";
 import Link from "next/link";
 import { FiX } from "react-icons/fi"; // ✅ react-icons import
 import { uploadToImgbb } from "@/utils/UploadImages";
+import { FormData } from "@/app/become-a-member/formConfig";
 
 export default function EducationForm() {
   const { control } = useFormContext<FormData>();

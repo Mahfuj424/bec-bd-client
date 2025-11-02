@@ -1,7 +1,7 @@
 "use client";
 
+import { FormData } from "@/app/become-a-member/formConfig";
 import { useFormContext, Controller } from "react-hook-form";
-import type { FormData } from "@/app/become-a-member/page";
 import { FiX } from "react-icons/fi";
 
 export default function ProfessionalForm() {

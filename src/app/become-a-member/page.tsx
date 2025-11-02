@@ -19,63 +19,8 @@ import MembershipTypeForm from "@/components/membership/membership-type-form";
 import PaymentForm from "@/components/membership/payment-form";
 import ConfirmationForm from "@/components/membership/confirmation-form";
 import toast from "react-hot-toast";
+import { STEPS, FormData } from "./formConfig";
 
-// Form steps
-export const STEPS = {
-  PERSONAL_INFO: 0,
-  EDUCATION: 1,
-  PROFESSIONAL: 2,
-  MEMBERSHIP_TYPE: 3,
-  PAYMENT: 4,
-  CONFIRMATION: 5,
-};
-
-// Form types for TypeScript
-export type EducationEntry = {
-  degree: string;
-  university: string;
-  passingYear: number;
-  result: string;
-  certificate: string;
-};
-
-export type ProfessionalEntry = {
-  company: string;
-  position: string;
-  duration: string;
-};
-
-export type FormData = {
-  // Personal Info
-  fullName: string;
-  profile: string;
-  fatherName: string;
-  motherName: string;
-  dateOfBirth: string;
-  nationality: string;
-  address: string;
-  mobile: number;
-  email: string;
-  bloodGroup: string;
-  gender: string;
-  nidPassport: number;
-  emergencyContact: number;
-
-  // Education
-  educationEntries: EducationEntry[];
-
-  // Professional
-  professionalEntries: ProfessionalEntry[];
-
-  // Membership
-  membershipType: string;
-  membershipNumber?: string;
-  signatureUrl?: string;
-
-  // Payment
-  paymentMethod: string;
-  transactionId: string;
-};
 
 export default function MembershipForm() {
   const [step, setStep] = useState(STEPS.PERSONAL_INFO);

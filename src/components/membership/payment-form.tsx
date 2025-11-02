@@ -1,7 +1,7 @@
 "use client";
 
+import { FormData } from "@/app/become-a-member/formConfig";
 import { useFormContext } from "react-hook-form";
-import type { FormData } from "@/app/become-a-member/page";
 
 export default function PaymentForm() {
   const {

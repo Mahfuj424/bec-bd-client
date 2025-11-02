@@ -4,8 +4,8 @@
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
-import type { FormData } from "@/app/become-a-member/page";
 import { uploadToImgbb } from "@/utils/UploadImages";
+import { FormData } from "@/app/become-a-member/formConfig";
 
 export default function PersonalInfoForm() {
   const {

@@ -1,9 +1,9 @@
 "use client";
 
 import { useFormContext } from "react-hook-form";
-import type { FormData } from "@/app/become-a-member/page";
 import { useState } from "react";
 import { uploadToImgbb } from "@/utils/UploadImages";
+import { FormData } from "@/app/become-a-member/formConfig";
 
 export default function MembershipTypeForm() {
   const {

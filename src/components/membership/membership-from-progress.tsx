@@ -1,5 +1,5 @@
+import { STEPS } from "@/app/become-a-member/formConfig";
 import type { ReactNode } from "react";
-import { STEPS } from "@/app/become-a-member/page";
 
 interface MembershipFormProgressProps {
   currentStep: number;

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { FormData } from "@/app/become-a-member/formConfig";
 import { useFormContext } from "react-hook-form";
-import type { FormData } from "@/app/become-a-member/page";
 
 export default function ConfirmationForm({ setTermConditionIsTrue }: any) {
   const { watch } = useFormContext<FormData>();
