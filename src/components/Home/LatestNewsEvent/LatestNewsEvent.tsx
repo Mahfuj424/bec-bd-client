@@ -162,7 +162,7 @@ export default function LatestNewsEvents() {
 
   return (
     <section className="py-16 bg-gray-50" ref={ref}>
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto ">
         {/* Title Section */}
         <motion.div
           className="text-center mb-12"
@@ -304,7 +304,7 @@ export default function LatestNewsEvents() {
           href={"/news-events"}
           className="text-center flex justify-center mt-10"
         >
-          <CustomButton name="View All News & Events >" />
+          <CustomButton textSize="text-xl" buttonSize="py-2 px-8" name="View All News & Events >" />
         </Link>
       </div>
     </section>

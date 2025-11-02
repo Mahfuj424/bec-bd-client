@@ -46,6 +46,7 @@ export default function CarouselBanner({ slides, autoPlayInterval = 5000, classN
               currentSlide === index ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           >
+            
             <Image
               src={slide.imageUrl || "/placeholder.svg"}
               alt={slide.title}
@@ -62,7 +63,7 @@ export default function CarouselBanner({ slides, autoPlayInterval = 5000, classN
               >
                 <h2 className="text-xl md:text-2xl lg:text-4xl font-bold mb-2">{slide.title}</h2>
                 <Link href={"/become-a-member"}>
-                  <CustomButton name="Register Now" />
+                  <CustomButton buttonSize="py-3 px-10" textSize="text-2xl font-bold" name="Register Now" />
                 </Link>
               </motion.div>
             </div>

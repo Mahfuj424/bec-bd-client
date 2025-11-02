@@ -88,7 +88,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-6 py-2 flex justify-between items-center">
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button onClick={() => setIsDrawerOpen(true)}>
               <FaBars className="text-2xl text-gray-700" />
             </button>
@@ -106,7 +106,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navbar Links */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden lg:flex space-x-6">
             {navbarItems?.map((item, index) => (
               <div
                 key={index}
@@ -116,7 +116,7 @@ const Navbar = () => {
               >
                 <Link
                   href={item.path || "#"}
-                  className={`font-medium transition text-xl duration-300 flex items-center ${
+                  className={`font-medium transition xl:text-xl lg:text-lg duration-300 flex items-center ${
                     firstSegment === item.path
                       ? "text-green-600 font-semibold"
                       : "text-gray-700 hover:text-green-600"
@@ -185,7 +185,7 @@ const Navbar = () => {
                   href={"/become-a-member"}
                   className="hidden md:block shadow-md"
                 >
-                  <CustomButton name="Become A Member" />
+                  <CustomButton textSize="xl:text-xl" buttonSize="py-1 px-4" name="Become A Member" />
                 </Link>
               </>
             )}

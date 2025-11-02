@@ -9,7 +9,7 @@ import SupportUs from "../SupportUs/SupportUs";
 
 const HomeComponents = () => {
   return (
-    <div className="space-y-24 mb-24">
+    <div className="space-y-24 mb-24 px-4">
       <AboutBec />
       <WhatSay />
       <MembershipSection />

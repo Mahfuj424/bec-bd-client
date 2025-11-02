@@ -86,7 +86,7 @@ export default function ExecutiveCommittee() {
   };
 
   return (
-    <section className="max-w-7xl mx-auto py-12 bg-white">
+    <section className=" mx-auto py-12 bg-white">
       {/* Header with green border */}
       <div className="container mx-auto px-6">
         <div>

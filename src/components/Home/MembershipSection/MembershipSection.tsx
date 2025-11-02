@@ -43,7 +43,7 @@ export default function MembershipSection() {
 
   return (
     <div className="bg-gray-50 py-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto xl:max-w-7xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto xl:">
         {/* Member Facilities Card */}
         <div className="group relative bg-white  rounded-2xl hover:rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
           {/* Top accent bar */}
@@ -132,7 +132,7 @@ export default function MembershipSection() {
               </div>
 
               <Link href={"/become-a-member"}>
-                <CustomButton name="Apply Now" />
+                <CustomButton textSize="text-xl" buttonSize="py-2 px-8" name="Apply Now" />
               </Link>
             </div>
           </div>

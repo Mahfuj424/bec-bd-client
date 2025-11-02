@@ -18,6 +18,7 @@ import ProfessionalForm from "@/components/membership/professional-form";
 import MembershipTypeForm from "@/components/membership/membership-type-form";
 import PaymentForm from "@/components/membership/payment-form";
 import ConfirmationForm from "@/components/membership/confirmation-form";
+import toast from "react-hot-toast";
 
 // Form steps
 export const STEPS = {
@@ -183,7 +184,7 @@ export default function MembershipForm() {
   const onSubmit = (data: FormData) => {
     // Log the form data to the console as requested
     console.log("Form submitted with data:", data);
-    alert("Form submitted successfully! Check console for data.");
+    toast.success("Form submitted successfully! Check console for data.");
   };
 
   const getStepIcon = (stepNumber: number) => {

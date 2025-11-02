@@ -8,7 +8,7 @@ const AboutBec = () => {
   return (
     <div>
       <HeaderSection title="Bangladesh Engineers Council" />
-      <div className="md:flex gap-10 container max-w-7xl mx-auto">
+      <div className="md:flex gap-10 container  mx-auto">
         <div className="">
           <Image
             src={"/about/about.webp"}
@@ -31,8 +31,8 @@ const AboutBec = () => {
             web and publication team, and some other committees to work smoother
             and better. We already come long way, but we need to reach far.
           </p>
-          <Link href={"/about"} className="pt-5">
-            <CustomButton name="Learn More..." />
+          <Link href={"/"} className="pt-5">
+            <CustomButton buttonSize="py-1 px-4" textSize="text-xl" name="Learn More..." />
           </Link>
         </div>
       </div>

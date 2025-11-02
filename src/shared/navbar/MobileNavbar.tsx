@@ -63,7 +63,7 @@ const MobileNavbar = ({
     <>
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-30 z-40 transition-opacity duration-500 ${
+        className={`fixed inset-0 bg-black/20 bg-opacity-30 z-40 transition-opacity duration-500 ${
           isDrawerOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={handleMenuClick}

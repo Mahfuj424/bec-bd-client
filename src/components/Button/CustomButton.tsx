@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const CustomButton = ({ name }: { name: string }) => {
+const CustomButton = ({ name, buttonSize, textSize }: { name: string, buttonSize: string, textSize: string }) => {
   const [hasMounted, setHasMounted] = useState(false);
 
   // Ensure the component only renders after mounting
@@ -13,7 +13,7 @@ const CustomButton = ({ name }: { name: string }) => {
   if (!hasMounted) return null; // Prevent rendering before mounting to avoid hydration issues
 
   return (
-    <button className="relative cursor-pointer text-white py-1 px-4 rounded overflow-hidden border border-green-600 transition-all duration-500 ease-out group">
+    <button className={`relative cursor-pointer text-white ${buttonSize} rounded overflow-hidden border border-green-600 transition-all duration-500 ease-out group`}>
       {/* Solid Green Background */}
       <span className="absolute inset-0 bg-green-600"></span>
 
@@ -21,7 +21,7 @@ const CustomButton = ({ name }: { name: string }) => {
       <span className="absolute inset-0 bg-[#0002FF] transform translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
 
       {/* Button Text */}
-      <span className="relative text-xl group-hover:text-white">
+      <span className={`relative ${textSize} group-hover:text-white`}>
         {name}
       </span>
     </button>
